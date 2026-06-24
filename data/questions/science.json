@@ -1,0 +1,492 @@
+[
+  {
+    "question": "Quelle planète est la plus proche du Soleil dans notre système solaire ?",
+    "answers": [
+      "Mercure"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Quelle est la formule chimique de l'eau ?",
+    "answers": [
+      "H2O"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Quel scientifique a formulé la théorie de la relativité ?",
+    "answers": [
+      "Albert Einstein",
+      "Einstein"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Combien de planètes compte notre système solaire ?",
+    "answers": [
+      "8",
+      "huit"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Quel est l'os le plus long du corps humain ?",
+    "answers": [
+      "Fémur"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Quel gaz les plantes absorbent-elles lors de la photosynthèse ?",
+    "answers": [
+      "Dioxyde de carbone",
+      "CO2",
+      "gaz carbonique"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Quel scientifique anglais a découvert la loi de la gravitation universelle, selon la légende en observant une pomme tomber ?",
+    "answers": [
+      "Isaac Newton",
+      "Newton"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Quel organe humain pompe le sang dans le corps ?",
+    "answers": [
+      "Coeur",
+      "Le coeur"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Quel est le symbole chimique de l'or ?",
+    "answers": [
+      "Au"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quelle est la planète la plus grande de notre système solaire ?",
+    "answers": [
+      "Jupiter"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Quel scientifique a développé la théorie de l'évolution par sélection naturelle ?",
+    "answers": [
+      "Charles Darwin",
+      "Darwin"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Combien de chromosomes possède une cellule humaine normale ?",
+    "answers": [
+      "46",
+      "46 chromosomes"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quel chimiste russe a créé le tableau périodique des éléments en 1869 ?",
+    "answers": [
+      "Mendeleïev",
+      "Dmitri Mendeleïev",
+      "Mendeleev"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Combien d'éléments chimiques compte le tableau périodique actuel ?",
+    "answers": [
+      "118"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quelle scientifique polonaise a été la première personne à recevoir deux prix Nobel, en physique et en chimie ?",
+    "answers": [
+      "Marie Curie",
+      "Curie"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Quel est le gaz le plus abondant dans l'atmosphère terrestre ?",
+    "answers": [
+      "Azote",
+      "diazote",
+      "N2"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quelle est la vitesse approximative de la lumière dans le vide, en km/s ?",
+    "answers": [
+      "300 000",
+      "299 792",
+      "300000 km/s",
+      "299792 km/s"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quel type de cellules sont les globules rouges, et quel rôle ont-ils ?",
+    "answers": [
+      "Transport de l'oxygène",
+      "hématies"
+    ],
+    "difficulty": 3
+  },
+  {
+    "question": "Quel scientifique a décrit la structure en double hélice de l'ADN en 1953 ?",
+    "answers": [
+      "Watson et Crick",
+      "Watson",
+      "Crick",
+      "James Watson",
+      "Francis Crick"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quelle planète est surnommée la planète rouge ?",
+    "answers": [
+      "Mars"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Quel élément chimique est le plus léger et le plus abondant dans l'univers ?",
+    "answers": [
+      "Hydrogène",
+      "H"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quel est le nom du satellite naturel de la Terre ?",
+    "answers": [
+      "La Lune",
+      "Lune"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Dans quel organe la digestion des aliments commence-t-elle ?",
+    "answers": [
+      "La bouche",
+      "Bouche",
+      "estomac"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quel scientifique a énoncé les trois lois du mouvement qui fondent la mécanique classique ?",
+    "answers": [
+      "Newton",
+      "Isaac Newton"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quel est le symbole chimique du fer ?",
+    "answers": [
+      "Fe"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quelle est la plus petite unité de base du vivant ?",
+    "answers": [
+      "Cellule",
+      "la cellule"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Quel phénomène naturel est mesuré sur l'échelle de Richter ?",
+    "answers": [
+      "Séismes",
+      "tremblements de terre",
+      "earthquakes"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quel est le nom du noyau de la cellule qui contient l'ADN ?",
+    "answers": [
+      "Noyau",
+      "le noyau"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quelle force maintient les planètes en orbite autour du Soleil ?",
+    "answers": [
+      "Gravité",
+      "gravitation",
+      "gravitation universelle"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Combien de dents permanentes possède un adulte humain en bonne santé (avec les dents de sagesse) ?",
+    "answers": [
+      "32",
+      "trente-deux"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quel type de rayonnement est utilisé dans une radiographie médicale ?",
+    "answers": [
+      "Rayons X",
+      "rayons x"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quelle est la formule chimique du sel de table ?",
+    "answers": [
+      "NaCl",
+      "chlorure de sodium"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Dans quel état la matière n'a-t-elle ni forme ni volume propre ?",
+    "answers": [
+      "Gazeux",
+      "état gazeux",
+      "gaz"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quel astronome polonais a proposé au XVIe siècle que la Terre tourne autour du Soleil ?",
+    "answers": [
+      "Copernic",
+      "Nicolas Copernic"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quel organe filtre le sang et produit l'urine dans le corps humain ?",
+    "answers": [
+      "Rein",
+      "les reins",
+      "rognon"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "À quelle température l'eau bout-elle au niveau de la mer, en degrés Celsius ?",
+    "answers": [
+      "100",
+      "100 degrés",
+      "100°C"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "À quelle température l'eau gèle-t-elle au niveau de la mer, en degrés Celsius ?",
+    "answers": [
+      "0",
+      "0 degré",
+      "0°C"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Quel est le nom du processus par lequel les plantes fabriquent leur nourriture à partir de la lumière ?",
+    "answers": [
+      "Photosynthèse",
+      "la photosynthèse"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Quel scientifique a découvert la pénicilline en 1928 ?",
+    "answers": [
+      "Alexander Fleming",
+      "Fleming"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quel est le symbole chimique de l'oxygène ?",
+    "answers": [
+      "O"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Combien de paires de chromosomes sexuels distinguent biologiquement un homme d'une femme ?",
+    "answers": [
+      "1",
+      "une paire",
+      "une"
+    ],
+    "difficulty": 3
+  },
+  {
+    "question": "Quel physicien allemand a formulé la théorie des quanta et est l'un des fondateurs de la physique quantique ?",
+    "answers": [
+      "Max Planck",
+      "Planck"
+    ],
+    "difficulty": 3
+  },
+  {
+    "question": "Quel est le nom de la molécule qui transporte l'oxygène dans le sang ?",
+    "answers": [
+      "Hémoglobine"
+    ],
+    "difficulty": 3
+  },
+  {
+    "question": "Quel astronome italien a été le premier à utiliser un télescope pour observer le ciel et a découvert des lunes de Jupiter ?",
+    "answers": [
+      "Galilée",
+      "Galileo Galilei"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quel est le nombre de paires de bases dans une molécule d'ADN humaine (en milliards) ?",
+    "answers": [
+      "3",
+      "3 milliards",
+      "environ 3 milliards"
+    ],
+    "difficulty": 4
+  },
+  {
+    "question": "Quel inventeur américain est connu pour la mise au point de l'ampoule électrique ?",
+    "answers": [
+      "Thomas Edison",
+      "Edison"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Quel est le nom du processus par lequel une cellule se divise en deux cellules identiques ?",
+    "answers": [
+      "Mitose",
+      "la mitose"
+    ],
+    "difficulty": 3
+  },
+  {
+    "question": "Quelle théorie scientifique explique l'origine et l'évolution de l'univers à partir d'un état initial très dense et chaud ?",
+    "answers": [
+      "Big Bang",
+      "théorie du Big Bang"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quelle glande du corps humain produit l'insuline qui régule le sucre dans le sang ?",
+    "answers": [
+      "Pancréas",
+      "le pancréas"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quel scientifique a découvert que la Terre n'est pas au centre de l'univers et que c'est le Soleil qui l'est dans notre système ?",
+    "answers": [
+      "Copernic",
+      "Nicolas Copernic"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quel est le nom du composé chimique formé par deux atomes d'hydrogène et un atome d'oxygène, essentiel à la vie ?",
+    "answers": [
+      "Eau",
+      "H2O",
+      "l'eau"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Combien d'os le squelette humain adulte compte-t-il environ ?",
+    "answers": [
+      "206",
+      "206 os"
+    ],
+    "difficulty": 3
+  },
+  {
+    "question": "Quel phénomène explique que la Lune présente toujours la même face à la Terre ?",
+    "answers": [
+      "Rotation synchrone",
+      "synchronisation",
+      "verrouillage gravitationnel"
+    ],
+    "difficulty": 4
+  },
+  {
+    "question": "Quelle est la couche de l'atmosphère terrestre qui absorbe les rayons ultraviolets du Soleil ?",
+    "answers": [
+      "Couche d'ozone",
+      "ozone",
+      "stratosphère"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quel physicien français a découvert que la lumière est une onde électromagnétique et a établi les équations qui la décrivent ?",
+    "answers": [
+      "Maxwell",
+      "James Clerk Maxwell"
+    ],
+    "difficulty": 4
+  },
+  {
+    "question": "Quel type d'énergie est produite par une centrale nucléaire à partir de la fission de l'atome d'uranium ?",
+    "answers": [
+      "Énergie nucléaire",
+      "énergie électrique",
+      "électricité"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quel organe est responsable de la production de la bile, qui aide à digérer les graisses ?",
+    "answers": [
+      "Foie",
+      "le foie"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Comment appelle-t-on l'ensemble des gènes d'un organisme ?",
+    "answers": [
+      "Génome",
+      "le génome"
+    ],
+    "difficulty": 3
+  },
+  {
+    "question": "Quel est le symbole chimique du carbone, élément de base de toute vie organique ?",
+    "answers": [
+      "C"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quel physicien a énoncé en 1900 que l'énergie est émise par quanta, ouvrant la voie à la mécanique quantique ?",
+    "answers": [
+      "Max Planck",
+      "Planck"
+    ],
+    "difficulty": 3
+  }
+]

@@ -1,0 +1,473 @@
+[
+  {
+    "question": "Quel pays a remporté le plus de Coupes du Monde de football avec 5 titres ?",
+    "answers": [
+      "Brésil"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Quel joueur de football brésilien est surnommé 'le Roi' et a remporté 3 Coupes du Monde ?",
+    "answers": [
+      "Pelé",
+      "Pele"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Quel sprinter jamaïcain détient le record du monde du 100m en 9,58 secondes ?",
+    "answers": [
+      "Usain Bolt",
+      "Bolt"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Quel nageur américain est l'athlète olympique le plus médaillé de l'histoire avec 28 médailles ?",
+    "answers": [
+      "Michael Phelps",
+      "Phelps"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Dans quel sport marque-t-on des essais et des transformations ?",
+    "answers": [
+      "Rugby"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Quelle est la durée d'un match de football en temps réglementaire, en minutes ?",
+    "answers": [
+      "90",
+      "90 minutes"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Quel pays a organisé les premiers Jeux Olympiques modernes en 1896 ?",
+    "answers": [
+      "Grèce",
+      "Athènes"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Combien de joueurs composent une équipe de basketball sur le terrain ?",
+    "answers": [
+      "5",
+      "cinq"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Quel sport se pratique avec un volant, aussi appelé shuttlecock ?",
+    "answers": [
+      "Badminton"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Quel joueur de tennis a remporté le plus de tournois du Grand Chelem chez les hommes ?",
+    "answers": [
+      "Novak Djokovic",
+      "Djokovic"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quel footballeur argentin a remporté 8 Ballons d'Or et la Coupe du Monde 2022 avec son pays ?",
+    "answers": [
+      "Lionel Messi",
+      "Messi"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Quel est le nom de la plus grande compétition de football de clubs en Europe ?",
+    "answers": [
+      "Ligue des Champions",
+      "Champions League",
+      "UEFA Champions League"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Dans quel sport un joueur peut-il réussir un 'strike' ou un 'spare' ?",
+    "answers": [
+      "Bowling"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Quel footballeur portugais est le meilleur buteur de l'histoire de la Ligue des Champions ?",
+    "answers": [
+      "Cristiano Ronaldo",
+      "Ronaldo"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quelle ville a accueilli les Jeux Olympiques d'été de 2024 ?",
+    "answers": [
+      "Paris"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Dans quelle discipline sportive Serena Williams a-t-elle remporté 23 titres du Grand Chelem ?",
+    "answers": [
+      "Tennis"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Quel sport se joue avec une raquette et une balle jaune sur un court divisé par un filet ?",
+    "answers": [
+      "Tennis"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Quel pays a le plus souvent remporté la Coupe du Monde de rugby ?",
+    "answers": [
+      "Nouvelle-Zélande",
+      "All Blacks"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quel club de football espagnol est surnommé les 'Blaugrana' et joue au Camp Nou ?",
+    "answers": [
+      "FC Barcelone",
+      "Barcelone",
+      "Barça",
+      "Barcelona"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quel tour cycliste célèbre traverse la France chaque été depuis 1903 ?",
+    "answers": [
+      "Tour de France"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Combien de joueurs composent une équipe de volleyball sur le terrain ?",
+    "answers": [
+      "6",
+      "six"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quel pays a remporté la Coupe du Monde de football en 2018 en Russie ?",
+    "answers": [
+      "France"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Dans quel sport pratique-t-on le 'coup droit' et le 'revers' ?",
+    "answers": [
+      "Tennis",
+      "tennis de table",
+      "ping-pong"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Quel boxeur américain, d'abord connu sous le nom de Cassius Clay, a été champion du monde des poids lourds trois fois ?",
+    "answers": [
+      "Muhammad Ali",
+      "Ali",
+      "Cassius Clay"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Dans quel sport s'affrontent des sumos ?",
+    "answers": [
+      "Sumo"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Quel est le club de football le plus titré en Ligue des Champions avec 15 victoires ?",
+    "answers": [
+      "Real Madrid"
+    ],
+    "difficulty": 3
+  },
+  {
+    "question": "Combien de sets faut-il remporter pour gagner un match de tennis au Grand Chelem chez les hommes ?",
+    "answers": [
+      "3",
+      "trois"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quel sportif français est surnommé 'Zizou' et a marqué de la tête en finale de la Coupe du Monde 1998 ?",
+    "answers": [
+      "Zinédine Zidane",
+      "Zidane"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Quelle discipline olympique consiste à lancer un disque le plus loin possible ?",
+    "answers": [
+      "Lancer du disque",
+      "disque"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quel joueur de basketball américain est surnommé 'His Airness' et a remporté 6 titres NBA avec les Chicago Bulls ?",
+    "answers": [
+      "Michael Jordan",
+      "Jordan"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Dans quel sport peut-on voir un 'hat-trick' désignant trois buts inscrits par le même joueur ?",
+    "answers": [
+      "Football",
+      "hockey",
+      "hockey sur glace"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quel pays a accueilli les Jeux Olympiques d'été de 2000 ?",
+    "answers": [
+      "Australie",
+      "Sydney"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quel sport se pratique sur un terrain en forme de losange avec des bases ?",
+    "answers": [
+      "Baseball"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Quel athlète kényan, champion du 800m et 1500m, a dominé le demi-fond mondial dans les années 90 ?",
+    "answers": [
+      "Wilson Kipketer",
+      "Kipketer",
+      "Hicham El Guerrouj",
+      "El Guerrouj"
+    ],
+    "difficulty": 4
+  },
+  {
+    "question": "Quelle joueuse de tennis roumaine a été la première à obtenir un 10 parfait en gymnastique aux JO de 1976 ?",
+    "answers": [
+      "Nadia Comaneci",
+      "Comaneci"
+    ],
+    "difficulty": 3
+  },
+  {
+    "question": "Dans quel sport dispute-t-on la Ryder Cup entre l'Europe et les États-Unis ?",
+    "answers": [
+      "Golf"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quel footballeur français a marqué lors de la finale de la Coupe du Monde 2022 contre l'Argentine ?",
+    "answers": [
+      "Kylian Mbappé",
+      "Mbappé",
+      "Mbappe"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Dans quelle ville américaine se déroule le marathon le plus célèbre du monde chaque année en avril ?",
+    "answers": [
+      "Boston"
+    ],
+    "difficulty": 3
+  },
+  {
+    "question": "Quel pays a remporté le plus de médailles d'or aux Jeux Olympiques d'été de Paris 2024 ?",
+    "answers": [
+      "États-Unis",
+      "USA"
+    ],
+    "difficulty": 3
+  },
+  {
+    "question": "Quel club de football anglais est surnommé 'The Red Devils' et joue à Old Trafford ?",
+    "answers": [
+      "Manchester United"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quel est le nom du tournoi de tennis sur gazon qui se tient à Londres chaque été depuis 1877 ?",
+    "answers": [
+      "Wimbledon"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Quel coureur cycliste belge a gagné le plus de Tours de France avec 5 victoires dans les années 60-70 ?",
+    "answers": [
+      "Eddy Merckx",
+      "Merckx"
+    ],
+    "difficulty": 3
+  },
+  {
+    "question": "Dans quel sport peut-on réaliser un 'smash', un 'lob' et un 'amorti' ?",
+    "answers": [
+      "Tennis",
+      "Badminton",
+      "squash"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quel pays a remporté la Coupe du Monde de football en 2014 au Brésil ?",
+    "answers": [
+      "Allemagne"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quel est le plus long parcours du monde en sport automobile, disputé chaque année au Mans ?",
+    "answers": [
+      "24 Heures du Mans",
+      "Les 24h du Mans",
+      "Le Mans"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quel sport pratique-t-on sur un tatami, où l'on peut remporter un 'ippon' ?",
+    "answers": [
+      "Judo"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Quel joueur de tennis espagnol est surnommé 'le Roi de la Terre Battue' pour ses 14 victoires à Roland-Garros ?",
+    "answers": [
+      "Rafael Nadal",
+      "Nadal"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Dans quel sport une équipe doit-elle envoyer un ballon dans le cerceau adverse à 3,05 m de hauteur ?",
+    "answers": [
+      "Basketball",
+      "basket"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Quel nageur américain a remporté 8 médailles d'or lors des Jeux de Pékin 2008, un record ?",
+    "answers": [
+      "Michael Phelps",
+      "Phelps"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quel est le pays d'origine du sport du sumo, où les lutteurs s'affrontent dans un anneau circulaire ?",
+    "answers": [
+      "Japon"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Dans quel sport pratique-t-on le 'crawl', la 'brasse' et le 'papillon' ?",
+    "answers": [
+      "Natation"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Quel pays a remporté la Coupe du Monde de football féminin en 2019 ?",
+    "answers": [
+      "États-Unis",
+      "USA"
+    ],
+    "difficulty": 3
+  },
+  {
+    "question": "Quel est le surnom de l'équipe nationale de rugby de Nouvelle-Zélande, célèbre pour son 'haka' ?",
+    "answers": [
+      "All Blacks"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Quel athlète éthiopien a remporté deux marathons olympiques consécutifs en 2000 et 2004 ?",
+    "answers": [
+      "Haile Gebrselassie",
+      "Gezahegne Abera",
+      "Vanderlei de Lima"
+    ],
+    "difficulty": 4
+  },
+  {
+    "question": "Quel sport se pratique sur glace avec des crosses et un palet ?",
+    "answers": [
+      "Hockey sur glace",
+      "hockey"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Quelle gymnaste américaine est connue pour ses figures impossibles et a dominé les championnats du monde dans les années 2010-2020 ?",
+    "answers": [
+      "Simone Biles",
+      "Biles"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quel club de football est connu sous le surnom 'Les Reds' et joue à Anfield à Liverpool ?",
+    "answers": [
+      "Liverpool FC",
+      "Liverpool"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Dans quel sport dispute-t-on le Tournoi des Six Nations chaque année en Europe ?",
+    "answers": [
+      "Rugby",
+      "rugby à XV"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quel pays a accueilli les Jeux Olympiques d'hiver de 2022 ?",
+    "answers": [
+      "Chine",
+      "Pékin",
+      "Beijing"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quel est le nom du trophée remis chaque année au meilleur joueur de football du monde par le magazine France Football ?",
+    "answers": [
+      "Ballon d'Or"
+    ],
+    "difficulty": 1
+  }
+]

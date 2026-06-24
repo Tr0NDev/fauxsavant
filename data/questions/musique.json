@@ -1,0 +1,465 @@
+[
+  {
+    "question": "Quel chanteur américain est surnommé le 'Roi du Pop' ?",
+    "answers": [
+      "Michael Jackson",
+      "Jackson"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Quel est le groupe britannique formé à Liverpool composé de John, Paul, George et Ringo ?",
+    "answers": [
+      "The Beatles",
+      "Beatles"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Quelle chanteuse américaine est surnommée la 'Reine du Pop' et a sorti des albums comme 'Like a Prayer' ?",
+    "answers": [
+      "Madonna"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Quel album de Michael Jackson, sorti en 1982, est le plus vendu de tous les temps ?",
+    "answers": [
+      "Thriller"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Quelle chanteuse française a popularisé 'La Vie en Rose' dans les années 40 ?",
+    "answers": [
+      "Édith Piaf",
+      "Edith Piaf",
+      "Piaf"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Quel groupe suédois a chanté 'Dancing Queen' et 'Waterloo' dans les années 70 ?",
+    "answers": [
+      "ABBA"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Quel chanteur américain est connu pour son moonwalk et ses chansons 'Billie Jean' et 'Beat It' ?",
+    "answers": [
+      "Michael Jackson",
+      "Jackson"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Quel groupe britannique a chanté 'Bohemian Rhapsody' avec le chanteur Freddie Mercury ?",
+    "answers": [
+      "Queen"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Quelle chanteuse américaine a sorti des albums comme '21' et 'Hello' avec sa voix de contralto reconnaissable ?",
+    "answers": [
+      "Adele"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Quel chanteur américain a été surnommé 'The King' et a popularisé le rock'n'roll dans les années 50 ?",
+    "answers": [
+      "Elvis Presley",
+      "Elvis"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Quel groupe de rock irlandais est mené par le chanteur Bono et a sorti l'album 'The Joshua Tree' ?",
+    "answers": [
+      "U2"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quel chanteur britannique a sorti les albums 'Ziggy Stardust' et 'Let's Dance' en changeant constamment de style ?",
+    "answers": [
+      "David Bowie",
+      "Bowie"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quel chanteur belgo-rwandais a sorti 'Alors on danse' en 2009, une chanson électro-rap qui a cartonné en Europe ?",
+    "answers": [
+      "Stromae"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quel groupe américain de rock alternatif est connu pour 'Smells Like Teen Spirit' et son chanteur Kurt Cobain ?",
+    "answers": [
+      "Nirvana"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quelle chanteuse américaine a sorti des albums comme 'Lemonade' et est mariée au rappeur Jay-Z ?",
+    "answers": [
+      "Beyoncé",
+      "Beyonce"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Quel pianiste allemand sourd a composé la 'Sonate au Clair de Lune' et la Symphonie n°9 ?",
+    "answers": [
+      "Beethoven",
+      "Ludwig van Beethoven"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quel rappeur français est connu pour ses textes engagés sur la banlieue marseillaise ?",
+    "answers": [
+      "Jul",
+      "IAM",
+      "Soprano"
+    ],
+    "difficulty": 3
+  },
+  {
+    "question": "Quel duo de DJs français a composé 'One More Time' et 'Get Lucky', pionniers de la French Touch ?",
+    "answers": [
+      "Daft Punk"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quel compositeur autrichien enfant prodige a composé plus de 600 œuvres dont 'La Flûte Enchantée' ?",
+    "answers": [
+      "Mozart",
+      "Wolfgang Amadeus Mozart"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quelle chanteuse canadienne a sorti 'My Heart Will Go On', la chanson du film Titanic ?",
+    "answers": [
+      "Céline Dion",
+      "Dion"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Quel chanteur pop britannique a sorti des albums comme 'X' et '÷' et la chanson 'Shape of You' ?",
+    "answers": [
+      "Ed Sheeran",
+      "Sheeran"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Quel chanteur américain de R&B a sorti 'Purple Rain' et est connu pour fusionner funk, rock et pop ?",
+    "answers": [
+      "Prince"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quel groupe de rock australien est connu pour l'album 'Back in Black' et la chanson 'Highway to Hell' ?",
+    "answers": [
+      "AC/DC",
+      "ACDC"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quel chanteur jamaïcain a popularisé le reggae avec des albums comme 'Exodus' et la chanson 'No Woman No Cry' ?",
+    "answers": [
+      "Bob Marley",
+      "Marley"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Quel chanteur français a sorti les albums 'Que je t'aime' et 'Le Pénitencier' dans les années 60-70 ?",
+    "answers": [
+      "Johnny Hallyday",
+      "Hallyday"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quel groupe de pop coréenne a popularisé la K-pop mondialement avec les titres 'Dynamite' et 'Butter' ?",
+    "answers": [
+      "BTS"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quel chanteur belge a sorti 'Papaoutai' et 'Formidable' avec des textes sur des sujets sociaux ?",
+    "answers": [
+      "Stromae"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Quelle chanteuse américaine a sorti l'album 'Folklore' et des albums pop et country comme 'Fearless' ?",
+    "answers": [
+      "Taylor Swift",
+      "Swift"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Quel rappeur américain est connu pour ses albums 'The College Dropout' et 'My Beautiful Dark Twisted Fantasy' ?",
+    "answers": [
+      "Kanye West",
+      "Kanye",
+      "West"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quel musicien américain aveugle a sorti des classiques comme 'Superstition' et 'Sir Duke' chez Motown ?",
+    "answers": [
+      "Stevie Wonder",
+      "Wonder"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quel groupe de pop britannique des années 90 comptait Victoria, Mel B, Mel C, Emma et Geri ?",
+    "answers": [
+      "Spice Girls"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quel chanteur américain a sorti 'Born to Run' et est surnommé 'The Boss' ?",
+    "answers": [
+      "Bruce Springsteen",
+      "Springsteen"
+    ],
+    "difficulty": 3
+  },
+  {
+    "question": "Quelle chanteuse américaine est connue pour ses danses et ses albums 'Dangerously in Love' et 'Lemonade' ?",
+    "answers": [
+      "Beyoncé",
+      "Beyonce"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Quel groupe de rock américain a sorti 'Smells Like Teen Spirit' et représente le mouvement grunge des années 90 ?",
+    "answers": [
+      "Nirvana"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quel groupe de boys band irlandais des années 90-2000 a sorti 'Everybody' et 'I Want It That Way' ?",
+    "answers": [
+      "Backstreet Boys"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quelle chanteuse américaine a sorti 'Poker Face' et 'Bad Romance' et est connue pour ses looks extravagants ?",
+    "answers": [
+      "Lady Gaga",
+      "Gaga"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Quel groupe de rock anglais mené par Mick Jagger a sorti '(I Can't Get No) Satisfaction' dans les années 60 ?",
+    "answers": [
+      "Rolling Stones",
+      "The Rolling Stones"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quel rappeur américain est connu pour ses albums 'Good Kid, M.A.A.D City' et est considéré comme un des meilleurs rappeurs de sa génération ?",
+    "answers": [
+      "Kendrick Lamar",
+      "Kendrick"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quelle chanteuse américaine a sorti 'Toxic' et 'Baby One More Time' au tournant des années 2000 ?",
+    "answers": [
+      "Britney Spears",
+      "Spears"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Quel compositeur baroque allemand a composé les Variations Goldberg et la Toccata et Fugue en ré mineur ?",
+    "answers": [
+      "Bach",
+      "Jean-Sébastien Bach",
+      "Johann Sebastian Bach"
+    ],
+    "difficulty": 3
+  },
+  {
+    "question": "Quel chanteur américain a sorti 'Bad Guy' avec sa sœur Finneas et est devenu célèbre à 17 ans ?",
+    "answers": [
+      "Billie Eilish",
+      "Eilish"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quel groupe de rock américain est connu pour 'Hotel California' et leur style rock des années 70 ?",
+    "answers": [
+      "Eagles"
+    ],
+    "difficulty": 3
+  },
+  {
+    "question": "Quel chanteur britannique a sorti 'Starman' et 'Space Oddity' et est connu pour son personnage Ziggy Stardust ?",
+    "answers": [
+      "David Bowie",
+      "Bowie"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quel rappeur américain, décédé en 1996, est considéré comme une légende avec ses albums 'All Eyez on Me' ?",
+    "answers": [
+      "2Pac",
+      "Tupac",
+      "Tupac Shakur"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quel groupe de rock britannique est à l'origine du genre punk avec l'album 'Never Mind the Bollocks' en 1977 ?",
+    "answers": [
+      "Sex Pistols"
+    ],
+    "difficulty": 3
+  },
+  {
+    "question": "Quel chanteur américain a sorti 'Lose Yourself', une chanson devenue un hymne à la persévérance ?",
+    "answers": [
+      "Eminem"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quelle chanteuse britannique a sorti 'Rolling in the Deep' et 'Someone Like You' avec sa voix soul puissante ?",
+    "answers": [
+      "Adele"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Quel groupe de rock britannique composé de John, Paul, George et Ringo a sorti l'album 'Abbey Road' en 1969 ?",
+    "answers": [
+      "The Beatles",
+      "Beatles"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quel chanteur jamaïcain, décédé en 1981, est l'icône mondiale du reggae et du mouvement rastafari ?",
+    "answers": [
+      "Bob Marley",
+      "Marley"
+    ],
+    "difficulty": 1
+  },
+  {
+    "question": "Quel groupe de rock français mené par Matthieu Chedid est connu pour 'L'Aventurier' ?",
+    "answers": [
+      "-M-",
+      "M",
+      "Matthieu Chedid",
+      "Chedid"
+    ],
+    "difficulty": 3
+  },
+  {
+    "question": "Quel groupe de rock britannique est connu pour 'Stairway to Heaven' et est composé de Jimmy Page et Robert Plant ?",
+    "answers": [
+      "Led Zeppelin",
+      "Led Zep"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quelle chanteuse américaine a sorti 'Crazy in Love' et est connue pour sa tournée Renaissance en 2023 ?",
+    "answers": [
+      "Beyoncé",
+      "Beyonce"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quel chanteur irlandais du groupe U2 est aussi connu pour son engagement humanitaire ?",
+    "answers": [
+      "Bono"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quel groupe de rock français a sorti 'Les Enfoirés' et participe chaque année aux concerts caritatifs des Restos du Coeur ?",
+    "answers": [
+      "Les Enfoirés"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quel rappeur américain de New York est connu pour ses albums 'Enter the Wu-Tang' avec son groupe Wu-Tang Clan ?",
+    "answers": [
+      "RZA",
+      "Wu-Tang Clan"
+    ],
+    "difficulty": 4
+  },
+  {
+    "question": "Quelle chanteuse franco-canadienne a représenté la Suisse au Concours Eurovision 1988 avec la chanson 'Ne partez pas sans moi' ?",
+    "answers": [
+      "Céline Dion",
+      "Dion"
+    ],
+    "difficulty": 3
+  },
+  {
+    "question": "Quel chanteur américain a sorti l'album 'Off the Wall' en 1979, qui a lancé sa carrière solo ?",
+    "answers": [
+      "Michael Jackson",
+      "Jackson"
+    ],
+    "difficulty": 3
+  },
+  {
+    "question": "Quel groupe de rock britannique a sorti l'album 'Dark Side of the Moon' en 1973, un des plus vendus de l'histoire ?",
+    "answers": [
+      "Pink Floyd"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quel chanteur français est connu pour ses chansons 'Je veux' et 'Ainsi bas la vida' ?",
+    "answers": [
+      "Zaz"
+    ],
+    "difficulty": 2
+  },
+  {
+    "question": "Quel groupe de rock américain est connu pour ses albums 'Nevermind' et son chanteur Kurt Cobain, décédé en 1994 ?",
+    "answers": [
+      "Nirvana"
+    ],
+    "difficulty": 2
+  }
+]

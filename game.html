@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FauxSavant - Salle</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div id="page-room" class="page active">
+    <div class="container">
+      <div class="lobby-header">
+        <div>
+          <h1>Partie FauxSavant</h1>
+          <p id="room-status">Chargement de la salle...</p>
+        </div>
+        <div class="room-code-wrapper">
+          <div class="room-code-display" id="room-code">---</div>
+          <button id="btn-toggle-room-code" class="icon-btn" type="button" aria-label="Cacher le code de la partie">
+            <span class="icon icon-eye" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+
+      <div id="game-lobby">
+        <div class="card">
+          <h2>Joueurs dans la salle</h2>
+          <div class="players-grid" id="players-grid"></div>
+        </div>
+
+        <div class="card" style="margin-top:1rem;">
+          <h2>Actions</h2>
+          <p>Le créateur de la partie peut démarrer la partie une fois les joueurs prêts.</p>
+          <div class="field" style="margin: 1rem 0;">
+            <label for="points-per-player-input">Points a atteindre par joueur</label>
+            <input id="points-per-player-input" class="input" type="number" min="10" step="10" value="100" />
+            <small style="color: var(--text-muted);">Cette valeur est multipliée par le nombre de joueurs.</small>
+          </div>
+          <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+            <button id="btn-start" class="btn btn-primary btn-lg">Lancer la partie</button>
+            <button id="btn-leave-lobby" class="btn btn-ghost btn-lg btn-back-menu">Retour au menu</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="game-panel" class="hidden">
+        <div class="phase-banner hidden" id="phase-banner">...</div>
+        <div class="overlay hidden" id="role-overlay" aria-hidden="true">
+          <div class="modal role-modal">
+            <div class="role-popup-title">Ton rôle</div>
+            <div class="role-popup-timer" id="role-overlay-timer">00:00</div>
+            <div class="role-popup-value" id="role-overlay-value">Joueur</div>
+          </div>
+        </div>
+        <div class="overlay hidden" id="confirm-leave-overlay" aria-hidden="true">
+          <div class="modal confirm-modal">
+            <div class="confirm-title">Quitter la partie</div>
+            <p class="confirm-message">Retourner au lobby arrête la manche en cours pour tous les joueurs. Veux-tu continuer ?</p>
+            <div class="confirm-actions">
+              <button id="btn-cancel-leave" class="btn btn-ghost">Annuler</button>
+              <button id="btn-confirm-leave" class="btn btn-danger">Oui, quitter</button>
+            </div>
+          </div>
+        </div>
+        <div class="page-role-banner">
+          <div class="role-header">
+            <div class="role-label">Rôle</div>
+            <button id="btn-toggle-role" class="icon-btn" type="button" aria-label="Cacher le rôle">
+              <span class="icon icon-eye" aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="role-value" id="hud-role">En attente...</div>
+        </div>
+
+        <button id="btn-return-lobby" class="btn btn-ghost btn-sm btn-quit-game hidden">Quitter vers le menu</button>
+
+        <div class="game-topbar">
+          <div class="timer-block">
+            <div class="timer-label">Temps</div>
+            <div class="timer-value" id="hud-timer">00:00</div>
+            <div class="timer-note">Temps restant</div>
+          </div>
+        </div>
+
+        <div class="score-panel">
+          <div class="score-card">
+            <div class="score-label">Score total</div>
+            <div class="score-value" id="hud-total">0</div>
+            <div class="score-note" id="hud-threshold">Objectif : 0</div>
+          </div>
+          <div class="score-card">
+            <div class="score-label">Score manche</div>
+            <div class="score-value" id="hud-pot">0</div>
+            <div class="score-note" id="hud-streak">Palier : 0</div>
+          </div>
+        </div>
+
+        <aside id="palier-ladder" class="palier-ladder" aria-hidden="false"></aside>
+
+        <div id="question-card" class="question-card hidden">
+          <div class="question-meta">
+            <div class="question-theme" id="question-theme">Thème</div>
+          </div>
+          <div class="question-text" id="question-text">Question ici</div>
+          <div class="answer-card">
+            <input id="answer-input" class="input" type="text" placeholder="Écris ta réponse..." />
+            <button id="btn-submit-answer" class="btn btn-primary">Envoyer</button>
+          </div>
+          <div id="current-answerer" class="current-answerer hidden"></div>
+          <div id="previous-answer" class="previous-answer hidden"></div>
+          <button id="btn-cashout" class="btn btn-gold" style="margin-top:1rem;">Encaisser</button>
+        </div>
+
+        <div id="pre-round-controls" class="card hidden" style="margin-top:1rem;">
+          <h2>Choix avant la question</h2>
+          <p id="pre-round-text">Tu peux encaisser ton palier avant que la question apparaisse.</p>
+          <div style="display:flex;gap:1rem;margin-top:1rem;">
+            <button id="btn-early-cashout" class="btn btn-gold">Encaisser</button>
+            <button id="btn-decline-cashout" class="btn btn-ghost">Ne pas encaisser</button>
+          </div>
+        </div>
+
+        <div id="recap-card" class="card hidden">
+          <h2>Récap de la manche</h2>
+          <p id="recap-text">Points et événements.</p>
+        </div>
+
+        <div id="vote-card" class="card hidden">
+          <h2>Vote d'élimination</h2>
+          <p id="vote-instruction">Choisis un joueur.</p>
+          <div class="vote-grid" id="vote-grid"></div>
+          <button id="btn-submit-vote" class="btn btn-primary btn-lg" style="margin-top:1rem">Valider le vote</button>
+        </div>
+
+        <div id="end-card" class="card hidden end-screen">
+          <div class="end-icon" id="end-icon">🏁</div>
+          <div class="end-title" id="end-title">Fin de la partie</div>
+          <p id="end-message">Résultat...</p>
+          <button id="btn-back-home" class="btn btn-primary btn-lg" style="margin-top:1rem">Retour au lobby</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast-container"></div>
+  <script type="module" src="js/ui-game.js"></script>
+</body>
+</html>
