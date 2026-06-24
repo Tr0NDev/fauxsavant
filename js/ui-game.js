@@ -561,15 +561,6 @@ function renderPhaseBanner(room) {
   } else if (room.phaseType === "roundStart") {
     phaseBanner.classList.remove("hidden");
     phaseBanner.textContent = "Préparez-vous pour le prochain tour...";
-  } else if (room.phaseType === "recap") {
-    phaseBanner.classList.remove("hidden");
-    phaseBanner.textContent = "Récap de la manche";
-  } else if (room.phaseType === "voting") {
-    phaseBanner.classList.remove("hidden");
-    phaseBanner.textContent = "Vote d'élimination";
-  } else if (room.phaseType === "voteReveal") {
-    phaseBanner.classList.remove("hidden");
-    phaseBanner.textContent = "Révélation des votes";
   } else {
     phaseBanner.classList.add("hidden");
   }
@@ -625,7 +616,7 @@ function renderVote(room) {
 
   const votedCount = Object.keys(voteData).length;
   voteInstruction.textContent = isReveal
-    ? `Révélation des votes : ${revealState.revealedVotes}/${revealState.totalVotes} votes affichés.`
+    ? `${revealState.revealedVotes}/${revealState.totalVotes} votes affichés.`
     : hasSubmittedVote
       ? `Vote envoyé (${votedCount}/${activePlayers.length}). Attends la fin du vote.`
       : `Choisis un joueur (${votedCount}/${activePlayers.length} votes enregistrés).`;
