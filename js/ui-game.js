@@ -7,6 +7,7 @@ import {
   endGame,
   deleteRoom,
   setupPresence,
+  joinRoom,
 } from "./db.js";
 import { getRandomQuestion, checkAnswer } from "./questions.js";
 import {
@@ -84,7 +85,7 @@ const palierLadder = document.getElementById("palier-ladder");
 const currentRoomCode =
   new URLSearchParams(window.location.search).get("room") ||
   sessionStorage.getItem("roomCode");
-const currentPlayerId = sessionStorage.getItem("playerId");
+let currentPlayerId = sessionStorage.getItem("playerId");
 let currentRoom = null;
 let selectedVoteTarget = null;
 let hasSubmittedVote = false;
@@ -1116,7 +1117,7 @@ async function handleAnswerDraftInput(event) {
   }, 150);
 }
 
-function init() {
+async function init() {
   if (!currentRoomCode) {
     roomStatus.textContent = "Aucun code de salle trouvé.";
     showToast("Reviens depuis l'accueil pour rejoindre ou créer une partie.", "warning");
@@ -1186,6 +1187,38 @@ function init() {
         btnConfirmLeave.disabled = false;
       }
     });
+  }
+
+  // Auto-join when arriving with ?room=CODE in the URL.
+  if (!currentPlayerId) {
+    // reuse stored name if available
+    const storedName = (function () {
+      try { return localStorage.getItem('lastPlayerName') || ''; } catch (e) { return ''; }
+    })();
+    let name = storedName && storedName.trim() ? storedName.trim() : `Invité${Math.floor(1000 + Math.random() * 9000)}`;
+    const id = (crypto.randomUUID && crypto.randomUUID()) || `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+    const playerObj = {
+      id,
+      name,
+      score: 0,
+      eliminated: false,
+      ready: false,
+      online: true,
+    };
+
+    try {
+      await joinRoom(currentRoomCode, playerObj);
+      try { localStorage.setItem('lastPlayerName', name); } catch (e) {}
+      sessionStorage.setItem('roomCode', currentRoomCode);
+      sessionStorage.setItem('playerId', id);
+      currentPlayerId = id;
+    } catch (err) {
+      console.error('Auto-join failed', err);
+      showToast(err.message || 'Impossible de rejoindre la partie', 'danger');
+      // Redirect back to home after a short delay
+      setTimeout(() => window.location.href = 'index.html', 1200);
+      return;
+    }
   }
 
   subscribeRoom(currentRoomCode, async (room) => {
