@@ -216,8 +216,13 @@ h3 { font-size: 1.1rem; }
 .home-header .logo {
   font-size: 3.2rem;
   margin-bottom: .75rem;
-}
-.home-header h1 {
+}.home-header .title-image img {
+  width: 100%;
+  max-width: 520px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}.home-header h1 {
   letter-spacing: .02em;
 }
 .home-header h1 span { color: var(--accent); }

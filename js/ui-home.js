@@ -16,13 +16,14 @@ function showToast(message, type = "default") {
   setTimeout(() => toast.remove(), 3500);
 }
 
+
 function showCopiedBadge(inputEl) {
   try {
     const parent = inputEl.parentElement || document.body;
     const badge = document.createElement('div');
     badge.className = 'copied-badge';
     badge.textContent = 'Code copié';
-    // ensure parent is positioned to allow absolute placement
+    // ensure parent is positioned to allow abdsolute placement
     if (getComputedStyle(parent).position === 'static') parent.style.position = 'relative';
     parent.appendChild(badge);
     // trigger animation
