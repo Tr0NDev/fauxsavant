@@ -33,8 +33,21 @@
           <p>Le créateur de la partie peut démarrer la partie une fois les joueurs prêts.</p>
           <div class="field" style="margin: 1rem 0;">
             <label for="points-per-player-input">Points a atteindre par joueur</label>
-            <input id="points-per-player-input" class="input" type="number" min="10" step="10" value="100" />
+            <div class="duration-control">
+              <button id="btn-points-decrease" class="btn btn-ghost btn-icon" type="button" aria-label="Réduire de 10 points">−</button>
+              <input id="points-per-player-input" class="input no-spinner" type="number" min="10" step="10" value="100" />
+              <button id="btn-points-increase" class="btn btn-ghost btn-icon" type="button" aria-label="Augmenter de 10 points">+</button>
+            </div>
             <small style="color: var(--text-muted);">Cette valeur est multipliée par le nombre de joueurs.</small>
+          </div>
+          <div class="field" style="margin: 1rem 0;">
+            <label for="round-duration-input">Durée des manches</label>
+            <div class="duration-control">
+              <button id="btn-round-duration-decrease" class="btn btn-ghost btn-icon" type="button" aria-label="Réduire de 10 secondes">−</button>
+              <input id="round-duration-input" class="input" type="text" placeholder="1:30" value="1:30" />
+              <button id="btn-round-duration-increase" class="btn btn-ghost btn-icon" type="button" aria-label="Augmenter de 10 secondes">+</button>
+            </div>
+            <small style="color: var(--text-muted);">Ceci représente la durée des manches de questions.</small>
           </div>
           <div style="display:flex;gap:1rem;flex-wrap:wrap;">
             <button id="btn-start" class="btn btn-primary btn-lg">Lancer la partie</button>

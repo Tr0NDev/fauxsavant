@@ -8,6 +8,11 @@ const THEMES = [
   { name: "Géographie", file: "data/questions/geographie.json" },
   { name: "Histoire",   file: "data/questions/histoire.json" },
   { name: "Science",    file: "data/questions/science.json" },
+  { name: "Art",    file: "data/questions/art.json" },
+  { name: "Cinema",    file: "data/questions/cinema.json" },
+  { name: "Jeux Vidéo",    file: "data/questions/jeuxvideo.json" },
+  { name: "Sport",    file: "data/questions/sport.json" },
+  { name: "Musique",    file: "data/questions/musique.json" },
   // { name: "Sport",   file: "data/questions/sport.json" },
   // { name: "Cinéma",  file: "data/questions/cinema.json" },
 ];

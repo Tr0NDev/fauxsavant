@@ -80,6 +80,11 @@ const confirmLeaveOverlay = document.getElementById("confirm-leave-overlay");
 const btnToggleRoomCode = document.getElementById("btn-toggle-room-code");
 const btnToggleRole = document.getElementById("btn-toggle-role");
 const pointsPerPlayerInput = document.getElementById("points-per-player-input");
+const btnPointsDecrease = document.getElementById("btn-points-decrease");
+const btnPointsIncrease = document.getElementById("btn-points-increase");
+const roundDurationInput = document.getElementById("round-duration-input");
+const btnRoundDurationDecrease = document.getElementById("btn-round-duration-decrease");
+const btnRoundDurationIncrease = document.getElementById("btn-round-duration-increase");
 const palierLadder = document.getElementById("palier-ladder");
 
 const currentRoomCode =
@@ -202,6 +207,35 @@ function updatePointsPerPlayerInput(room) {
   pointsPerPlayerInput.disabled = !isHost() || room.phase !== "lobby";
 }
 
+function formatRoundDuration(seconds) {
+  const minutes = Math.floor(seconds / 60);
+  const secs = seconds % 60;
+  return `${minutes}:${String(secs).padStart(2, "0")}`;
+}
+
+function parseRoundDuration(value) {
+  if (!value || typeof value !== "string") return null;
+  const normalized = value.trim().toLowerCase().replace(/min(?:ute)?s?/g, ":").replace(/m/g, ":").replace(/,/g, ":").replace(/\s+/g, "");
+  if (!normalized) return null;
+  if (normalized.includes(":")) {
+    const parts = normalized.split(":").filter(Boolean);
+    if (parts.length === 0) return null;
+    const minutes = Number(parts[0]);
+    const seconds = parts.length > 1 ? Number(parts[1]) : 0;
+    if (Number.isNaN(minutes) || Number.isNaN(seconds) || seconds < 0 || seconds >= 60 || minutes < 0) return null;
+    return minutes * 60 + seconds;
+  }
+  const numeric = Number(normalized);
+  if (Number.isNaN(numeric) || numeric < 30) return null;
+  return Math.round(numeric);
+}
+
+function updateRoundDurationInput(room) {
+  if (!roundDurationInput) return;
+  roundDurationInput.value = formatRoundDuration(room.roundDuration ?? 90);
+  roundDurationInput.disabled = !isHost() || room.phase !== "lobby";
+}
+
 function handlePointsPerPlayerChange(event) {
   if (!currentRoom || !isHost() || currentRoom.phase !== "lobby") return;
   const value = Number(event.target.value);
@@ -209,7 +243,61 @@ function handlePointsPerPlayerChange(event) {
     event.target.value = currentRoom.pointsPerPlayer ?? 100;
     return;
   }
-  updateRoom(currentRoom.roomCode, { pointsPerPlayer: value }).catch(() => {});
+  const finalValue = Math.max(10, Math.round(value / 10) * 10);
+  event.target.value = finalValue;
+  updateRoom(currentRoom.roomCode, { pointsPerPlayer: finalValue }).catch(() => {});
+}
+
+function changePointsPerPlayerBy(delta) {
+  if (!currentRoom || !isHost() || currentRoom.phase !== "lobby") return;
+  const currentValue = Number(pointsPerPlayerInput?.value) || currentRoom.pointsPerPlayer || 100;
+  const newValue = Math.max(10, currentValue + delta);
+  if (pointsPerPlayerInput) pointsPerPlayerInput.value = newValue;
+  updateRoom(currentRoom.roomCode, { pointsPerPlayer: newValue }).catch(() => {});
+}
+
+function handlePointsPerPlayerKeydown(event) {
+  if (!currentRoom || !isHost() || currentRoom.phase !== "lobby") return;
+  if (event.key === "ArrowUp" || event.key === "ArrowDown") {
+    event.preventDefault();
+    changePointsPerPlayerBy(event.key === "ArrowUp" ? 10 : -10);
+  }
+}
+
+function adjustRoundDuration(value) {
+  const rounded = Math.max(30, Math.round(value / 5) * 5);
+  const finalValue = Math.max(30, rounded);
+  if (!currentRoom || !isHost()) return;
+  if (roundDurationInput) roundDurationInput.value = formatRoundDuration(finalValue);
+  updateRoom(currentRoom.roomCode, { roundDuration: finalValue }).catch(() => {});
+}
+
+function changeRoundDurationBy(delta) {
+  if (!currentRoom || !isHost() || currentRoom.phase !== "lobby") return;
+  const currentSeconds = parseRoundDuration(roundDurationInput?.value || "1:30") || 90;
+  adjustRoundDuration(currentSeconds + delta);
+}
+
+function handleRoundDurationChange(event) {
+  if (!currentRoom || !isHost() || currentRoom.phase !== "lobby") return;
+  const parsed = parseRoundDuration(event.target.value);
+  if (parsed === null) {
+    event.target.value = formatRoundDuration(currentRoom.roundDuration ?? 90);
+    return;
+  }
+  const value = Math.max(30, parsed);
+  event.target.value = formatRoundDuration(value);
+  updateRoom(currentRoom.roomCode, { roundDuration: value }).catch(() => {});
+}
+
+function handleRoundDurationKeydown(event) {
+  if (!currentRoom || !isHost() || currentRoom.phase !== "lobby") return;
+  if (event.key === "ArrowUp" || event.key === "ArrowDown") {
+    event.preventDefault();
+    const currentSeconds = parseRoundDuration(roundDurationInput?.value || "1:30") || 90;
+    const delta = event.key === "ArrowUp" ? 10 : -10;
+    adjustRoundDuration(currentSeconds + delta);
+  }
 }
 
 function isHost() {
@@ -595,16 +683,20 @@ function renderVote(room) {
   voteGrid.innerHTML = "";
   activePlayers.forEach((player) => {
     const count = voteCounts[player.id] || 0;
-    const barWidth = Math.round((count / maxCount) * 100);
+    const barWidth = isReveal ? Math.round((count / maxCount) * 100) : 0;
+    const showSelected = selectedVoteTarget === player.id && !hasSubmittedVote && !isReveal;
     const card = document.createElement("button");
     card.type = "button";
-    card.className = `vote-card ${selectedVoteTarget === player.id ? "selected" : ""} ${isReveal ? "revealed" : ""}`;
+    card.className = `vote-card ${showSelected ? "selected" : ""} ${isReveal ? "revealed" : ""}`;
     card.innerHTML = `
       <div class="vote-avatar">${player.name.charAt(0).toUpperCase()}</div>
       <div class="vote-name">${player.name}</div>
       <div class="vote-bar"><div class="vote-bar-fill" style="width: ${barWidth}%;"></div></div>
       <div class="vote-count">${isReveal ? `${count} vote${count > 1 ? "s" : ""}` : "Vote caché"}</div>
     `;
+    if (!isReveal) {
+      card.classList.add("hidden-votes");
+    }
     if (hasSubmittedVote || isReveal || eliminated) {
       card.disabled = true;
       card.classList.add("disabled");
@@ -657,6 +749,7 @@ function renderGame(room) {
     btnStart.classList.toggle("hidden", !isHost() || room.phase !== "lobby");
     renderPlayers(room.players);
     updatePointsPerPlayerInput(room);
+    updateRoundDurationInput(room);
     return;
   }
 
@@ -786,7 +879,8 @@ async function transitionPhase(room) {
   if (room.phaseType === "roleReveal") {
     const firstPlayer = (room.turnOrder && room.turnOrder.find(id => room.players?.[id] && !room.players[id].eliminated)) || (room.turnOrder && room.turnOrder[0]) || room.currentTurn || null;
     if (firstPlayer) {
-      await startPhase(room.roomCode, "round", ROUND_DURATION, {
+      const roundDuration = room.roundDuration ?? ROUND_DURATION;
+      await startPhase(room.roomCode, "round", roundDuration, {
         nextPhaseType: "recap",
         currentTurn: firstPlayer,
         currentQuestion: null,
@@ -829,7 +923,8 @@ async function transitionPhase(room) {
   }
 
   if (room.phaseType === "roundStart") {
-    await startPhase(room.roomCode, "round", ROUND_DURATION, {
+    const roundDuration = room.roundDuration ?? ROUND_DURATION;
+    await startPhase(room.roomCode, "round", roundDuration, {
       nextPhaseType: "recap",
     });
     return;
@@ -1131,7 +1226,18 @@ async function init() {
   updateRoleVisibility();
   roomStatus.textContent = "Connexion à la salle...";
   btnStart.addEventListener("click", handleStart);
-  if (pointsPerPlayerInput) pointsPerPlayerInput.addEventListener("change", handlePointsPerPlayerChange);
+  if (pointsPerPlayerInput) {
+    pointsPerPlayerInput.addEventListener("change", handlePointsPerPlayerChange);
+    pointsPerPlayerInput.addEventListener("keydown", handlePointsPerPlayerKeydown);
+  }
+  if (btnPointsDecrease) btnPointsDecrease.addEventListener("click", () => changePointsPerPlayerBy(-10));
+  if (btnPointsIncrease) btnPointsIncrease.addEventListener("click", () => changePointsPerPlayerBy(10));
+  if (roundDurationInput) {
+    roundDurationInput.addEventListener("change", handleRoundDurationChange);
+    roundDurationInput.addEventListener("keydown", handleRoundDurationKeydown);
+  }
+  if (btnRoundDurationDecrease) btnRoundDurationDecrease.addEventListener("click", () => changeRoundDurationBy(-10));
+  if (btnRoundDurationIncrease) btnRoundDurationIncrease.addEventListener("click", () => changeRoundDurationBy(10));
   btnSubmitAnswer.addEventListener("click", handleSubmitAnswer);
   btnCashout.addEventListener("click", handleCashout);
   answerInput.addEventListener("input", handleAnswerDraftInput);

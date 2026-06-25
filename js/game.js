@@ -106,20 +106,20 @@ export function checkWinCondition(gameState) {
   const activeVillagers = activePlayers.filter(p => roles[p.id] === "villager");
   const activeImpostors = activePlayers.filter(p => roles[p.id] === "impostor");
 
-  // Plus de villageois → imposteurs gagnent
+  // Aucun villageois restant → imposteurs gagnent
   if (activeVillagers.length === 0) return "impostors";
 
-  // Plus d'imposteurs
+  // Autant ou plus d'imposteurs que de villageois → imposteurs gagnent
+  if (activeImpostors.length >= activeVillagers.length) return "impostors";
+
+  // Aucun imposteur restant → villageois gagnent ou doivent encore finir
   if (activeImpostors.length === 0) {
-    // Moins de 1/4 des joueurs initiaux restants → les villageois doivent finir
     const initialCount = Object.keys(players).length;
     if (activePlayers.length < initialCount / 4) {
-      // Ils doivent encore atteindre le score
       const threshold = computeThreshold(activePlayers.length, bonusThreshold);
       if (totalScore >= threshold) return "villagers";
       return null; // partie continue
     }
-    // Sinon victoire directe des villageois
     return "villagers";
   }
 
@@ -207,6 +207,7 @@ export function createInitialGameState(roomCode, hostId) {
     pointsPerPlayer: POINTS_PER_PLAYER,
     bonusThreshold: 0,      // bonus ajouté par les missions imposteurs
     currentQuestion: null,  // question en cours
+    roundDuration: 90,
     phaseType: null,        // roleReveal / roundStart / round / recap / voting
     phaseEndAt: null,       // timestamp de fin de phase
     nextPhaseType: null,    // phase suivante après recap or roleReveal

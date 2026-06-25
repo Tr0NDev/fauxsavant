@@ -172,12 +172,37 @@ h3 { font-size: 1.1rem; }
   color: var(--text-muted);
   cursor: not-allowed;
 }
+.input.no-spinner::-webkit-outer-spin-button,
+.input.no-spinner::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.input.no-spinner {
+  -moz-appearance: textfield;
+}
 .input.code-input {
   font-family: 'Space Mono', monospace;
   font-size: 1.5rem;
   text-align: center;
   letter-spacing: .3em;
   text-transform: uppercase;
+}
+
+.duration-control {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: .5rem;
+  align-items: center;
+}
+.duration-control .btn-icon {
+  min-width: 3rem;
+  min-height: 3rem;
+  padding: 0;
+  font-size: 1.2rem;
+  border-radius: 14px;
+}
+.duration-control .input {
+  text-align: center;
 }
 
 /* ── Badge ───────────────────────────────────────────────────── */
@@ -814,6 +839,9 @@ h3 { font-size: 1.1rem; }
 .vote-card.selected { border-color: var(--accent); background: rgba(156,206,154,.16); box-shadow: 0 0 0 4px rgba(156,206,154,.16); }
 .vote-card.selected.revealed { border-color: rgba(255,76,76,.4); background: rgba(255,76,76,.08); box-shadow: 0 0 0 4px rgba(255,76,76,.12); }
 .vote-card.revealed { border-color: rgba(255,76,76,.4); background: rgba(255,76,76,.08); }
+.vote-card.hidden-votes .vote-bar { background: rgba(255,255,255,.04); }
+.vote-card.hidden-votes .vote-bar-fill { width: 0 !important; background: rgba(255,255,255,.12); }
+.vote-card.hidden-votes .vote-count { color: transparent; }
 .vote-card.revealed .vote-bar-fill { background: linear-gradient(90deg, rgba(255,76,76,.6), rgba(255,76,76,.95)); }
 .vote-card .vote-avatar { font-size: 2rem; margin-bottom: .5rem; }
 .vote-card .vote-name   { font-weight: 600; font-size: .9rem; }
