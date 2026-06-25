@@ -236,6 +236,11 @@ function updateRoundDurationInput(room) {
   roundDurationInput.disabled = !isHost() || room.phase !== "lobby";
 }
 
+function handlePointsPerPlayerInput(event) {
+  if (!pointsPerPlayerInput) return;
+  pointsPerPlayerInput.value = event.target.value.replace(/-/g, "");
+}
+
 function handlePointsPerPlayerChange(event) {
   if (!currentRoom || !isHost() || currentRoom.phase !== "lobby") return;
   const value = Number(event.target.value);
@@ -1227,6 +1232,7 @@ async function init() {
   roomStatus.textContent = "Connexion à la salle...";
   btnStart.addEventListener("click", handleStart);
   if (pointsPerPlayerInput) {
+    pointsPerPlayerInput.addEventListener("input", handlePointsPerPlayerInput);
     pointsPerPlayerInput.addEventListener("change", handlePointsPerPlayerChange);
     pointsPerPlayerInput.addEventListener("keydown", handlePointsPerPlayerKeydown);
   }
