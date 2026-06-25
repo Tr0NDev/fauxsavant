@@ -85,6 +85,7 @@ export async function startGame(roomCode, roles, turnOrder) {
     currentQuestion: null,
     phaseEndAt: Date.now() + 5000,
     startedAt: serverTimestamp(),
+    usedCorrectQuestions: {},
   });
 }
 

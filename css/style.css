@@ -98,6 +98,14 @@ h3 { font-size: 1.1rem; }
 }
 .card-sm { padding: 1.25rem 1.5rem; }
 
+/* Transparent variant for minimal panels (no background/border/shadow) */
+.card.card-transparent {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 1.25rem 1rem;
+}
+
 /* ── Boutons ─────────────────────────────────────────────────── */
 .btn {
   display: inline-flex;
@@ -511,6 +519,16 @@ h3 { font-size: 1.1rem; }
 .role-impostor { background: rgba(216, 111, 88, .14); color: #d86f58; border: 1px solid rgba(216, 111, 88, .28); }
 .role-villager { background: rgba(156, 206, 154, .16); color: #6a8c61; border: 1px solid rgba(156, 206, 154, .28); }
 .role-eliminated { background: rgba(120, 120, 120, .12); color: var(--text-muted); border: 1px solid rgba(120, 120, 120, .22); }
+.role-value .role-icon,
+.role-popup-value .role-icon {
+  width: 28px;
+  height: 28px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-right: .5rem;
+}
+.role-value .role-label-text,
+.role-popup-value .role-label-text { vertical-align: middle; }
 .timer-block {
   display: flex;
   flex-direction: column;

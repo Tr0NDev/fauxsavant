@@ -1,8 +1,7 @@
 import { createRoom, joinRoom } from "./db.js";
 import { createInitialGameState, generateRoomCode } from "./game.js";
 
-const hostNameInput = document.getElementById("host-name");
-const joinNameInput = document.getElementById("join-name");
+const playerNameInput = document.getElementById("player-name");
 const joinCodeInput = document.getElementById("join-code");
 const btnCreate = document.getElementById("btn-create");
 const btnJoin = document.getElementById("btn-join");
@@ -65,12 +64,12 @@ function createPlayer(name) {
 }
 
 async function handleCreate() {
-  let name = hostNameInput.value.trim();
+  let name = playerNameInput.value.trim();
   if (!name) {
     name = generateRandomName();
   }
   storeName(name);
-  hostNameInput.value = name;
+  playerNameInput.value = name;
 
   const roomCode = generateRoomCode();
   const player = createPlayer(name);
@@ -102,13 +101,13 @@ async function handleCreate() {
 }
 
 async function handleJoin() {
-  let name = joinNameInput.value.trim();
+  let name = playerNameInput.value.trim();
   const roomCode = normalizeRoomCode(joinCodeInput.value);
   if (!name) {
     name = generateRandomName();
   }
   storeName(name);
-  joinNameInput.value = name;
+  playerNameInput.value = name;
   if (!roomCode || roomCode.length !== 6) {
     showToast("Entre un code de partie valide (6 caractères)", "danger");
     return;
@@ -140,8 +139,7 @@ btnJoin.addEventListener("click", handleJoin);
 // Prefill inputs from localStorage
 const stored = getStoredName();
 if (stored) {
-  hostNameInput.value = stored;
-  joinNameInput.value = stored;
+  playerNameInput.value = stored;
 }
 
 // Clicking the join code input will copy its value to clipboard if present

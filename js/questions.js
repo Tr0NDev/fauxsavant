@@ -33,14 +33,30 @@ async function loadTheme(themeFile) {
  * Si un thème est vide ou invalide, il est ignoré.
  * @returns {{ question, answers, difficulty, theme }}
  */
-export async function getRandomQuestion() {
+/**
+ * Retourne une clé sûre pour une question (utilisée pour l'exclusion)
+ */
+function questionKey(q) {
+  const text = (q && q.question) ? q.question : String(q || '');
+  return encodeURIComponent(text).replace(/[.#$\[\]]/g, '_');
+}
+
+/**
+ * Tire une question aléatoire, en option excluant celles présentes dans `usedMap`.
+ * `usedMap` est un objet dont les clés sont des clés de question (voir `questionKey`).
+ */
+export async function getRandomQuestion(usedMap = {}) {
   const availableThemes = [];
 
   for (const theme of THEMES) {
     const questions = await loadTheme(theme.file).catch(() => []);
     const validQuestions = Array.isArray(questions) ? questions : [];
-    if (validQuestions.length > 0) {
-      availableThemes.push({ theme, questions: validQuestions });
+    // Filter out questions that are marked used (answered correctly)
+    const filtered = validQuestions.filter(q => !usedMap || !usedMap[questionKey(q)]);
+    // If filtering removes all questions, fall back to full list for that theme
+    const finalList = filtered.length ? filtered : validQuestions;
+    if (finalList.length > 0) {
+      availableThemes.push({ theme, questions: finalList });
     }
   }
 

@@ -18,10 +18,12 @@
     </div>
 
     <div class="home-actions">
-      <div class="card">
-        <h3 style="margin-bottom:1rem">Créer une partie</h3>
-        <label style="display:block;margin-bottom:.5rem;font-size:.9rem;color:var(--text-muted)">Ton pseudo</label>
-        <input id="host-name" class="input" type="text" placeholder="Entre ton pseudo..." maxlength="20" />
+      <div style="text-align:center;margin-bottom:1rem;">
+        <div style="color:var(--text-muted);font-size:.95rem;margin-bottom:.4rem;">Votre pseudo</div>
+        <input id="player-name" class="input" type="text" placeholder="Entre ton pseudo..." maxlength="20" style="max-width:360px;" />
+      </div>
+
+      <div class="card card-transparent">
         <button id="btn-create" class="btn btn-primary btn-full btn-lg" style="margin-top:1rem">
           ✦ Créer une partie
         </button>
@@ -31,8 +33,6 @@
 
       <div class="card">
         <h3 style="margin-bottom:1rem">Rejoindre une partie</h3>
-        <label style="display:block;margin-bottom:.5rem;font-size:.9rem;color:var(--text-muted)">Ton pseudo</label>
-        <input id="join-name" class="input" type="text" placeholder="Entre ton pseudo..." maxlength="20" style="margin-bottom:.75rem" />
         <label style="display:block;margin-bottom:.5rem;font-size:.9rem;color:var(--text-muted)">Code de la partie</label>
         <input id="join-code" class="input code-input" type="text" placeholder="ABC123" maxlength="6" />
         <button id="btn-join" class="btn btn-ghost btn-full btn-lg" style="margin-top:1rem">

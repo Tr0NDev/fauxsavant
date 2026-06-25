@@ -548,12 +548,15 @@ function renderPhaseBanner(room) {
   if (room.phaseType === "roleReveal") {
     phaseBanner.classList.add("hidden");
     if (roleOverlay) {
-      const roleLabel = room.roles?.[currentPlayerId] === "impostor" ? "Imposteur" : "Joueur";
-      roleOverlayValue.textContent = roleLabel;
+      const isImpostor = room.roles?.[currentPlayerId] === "impostor";
+      const roleLabel = isImpostor ? "Imposteur" : "Joueur";
+      const iconSrc = isImpostor ? "data/img/debile.png" : "data/img/joueur.png";
+      // insert an icon before the role label
+      roleOverlayValue.innerHTML = `<img src="${iconSrc}" alt="${roleLabel}" class="role-icon" /><span class="role-label-text">${roleLabel}</span>`;
       if (roleOverlayTimer) {
         roleOverlayTimer.textContent = remaining;
       }
-      roleOverlayValue.className = `role-popup-value ${room.roles?.[currentPlayerId] === "impostor" ? "role-impostor" : "role-villager"}`;
+      roleOverlayValue.className = `role-popup-value ${isImpostor ? "role-impostor" : "role-villager"}`;
       const shouldShow = !roleHidden;
       roleOverlay.classList.toggle('hidden', !shouldShow);
       roleOverlay.setAttribute('aria-hidden', shouldShow ? 'false' : 'true');
@@ -662,8 +665,11 @@ function renderGame(room) {
   hudThreshold.textContent = `Objectif : ${getThreshold(room)}`;
   hudPot.textContent = room.currentPot || 0;
   hudStreak.textContent = `Palier : ${getPalierValue(room.currentStreak || 0)}`;
-  hudRole.textContent = getRoleLabel(room);
-  hudRole.className = `role-value ${isEliminated() ? "role-eliminated" : room.roles?.[currentPlayerId] === "impostor" ? "role-impostor" : "role-villager"}`;
+  const roleLabelHud = getRoleLabel(room);
+  const isImpostorHud = room.roles?.[currentPlayerId] === "impostor";
+  const hudIcon = isImpostorHud ? "data/img/debile.png" : "data/img/joueur.png";
+  hudRole.innerHTML = `<img src="${hudIcon}" alt="${roleLabelHud}" class="role-icon" /><span class="role-label-text">${roleLabelHud}</span>`;
+  hudRole.className = `role-value ${isEliminated() ? "role-eliminated" : isImpostorHud ? "role-impostor" : "role-villager"}`;
   updateRoleVisibility();
   const inRound = room.phaseType === "round";
   const myTurn = isMyTurn();
@@ -757,7 +763,7 @@ async function startPhase(roomCode, phaseType, duration, updates = {}) {
 }
 
 async function publishNewQuestion(room, nextPlayerId) {
-  const question = await getRandomQuestion();
+  const question = await getRandomQuestion(room.usedCorrectQuestions || {});
   // Write the question and set the turn to the next player
   await updateRoom(currentRoomCode, {
     currentTurn: nextPlayerId,
@@ -936,11 +942,14 @@ async function handleSubmitAnswer() {
 
   if (correct) {
     streak += 1;
+    // mark this question as used/answered-correctly for the whole game
+    const qKey = encodeURIComponent(question.question).replace(/[.#$\[\]]/g, '_');
     await updateRoom(currentRoom.roomCode, {
       currentStreak: streak,
       currentAnswerDraft: null,
       previousQuestionAnswer,
       flash: { type: "success", timestamp: Date.now() },
+      [`usedCorrectQuestions/${qKey}`]: true,
     });
     flashFeedback(true);
   } else {
@@ -1126,6 +1135,14 @@ async function init() {
   btnSubmitAnswer.addEventListener("click", handleSubmitAnswer);
   btnCashout.addEventListener("click", handleCashout);
   answerInput.addEventListener("input", handleAnswerDraftInput);
+  // Allow pressing Enter in the answer input to submit the answer
+  answerInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      // handleSubmitAnswer performs its own validation
+      handleSubmitAnswer().catch((err) => console.error(err));
+    }
+  });
   if (btnEarlyCashout) btnEarlyCashout.addEventListener("click", handleEarlyCashout);
   if (btnDeclineCashout) btnDeclineCashout.addEventListener("click", handleDeclineCashout);
   btnSubmitVote.addEventListener("click", handleSubmitVote);
