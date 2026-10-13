@@ -13,16 +13,7 @@ const FIREBASE_CONFIG = {
   messagingSenderId: "411629709392",
   appId: "1:411629709392:web:f87316fd29a0a2d3160955"
 };
-// ============================================================
-//  ÉTAPE 2 : Dans Firebase Console > Realtime Database > Règles
-//  Colle ces règles (mode développement, à sécuriser plus tard) :
-//
-//  {
-//    "rules": {
-//      ".read": true,
-//      ".write": true
-//    }
-//  }
-// ============================================================
+// Active la connexion anonyme dans Firebase Authentication et publie
+// database.rules.json dans Realtime Database > Règles.
 
 export default FIREBASE_CONFIG;

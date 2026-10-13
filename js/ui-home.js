@@ -1,4 +1,4 @@
-import { createRoom, joinRoom } from "./db.js";
+import { createRoom, ensureAuthenticated, joinRoom } from "./db.js";
 import { createInitialGameState, generateRoomCode } from "./game.js";
 
 const playerNameInput = document.getElementById("player-name");
@@ -58,8 +58,7 @@ function generateRandomName() {
   return `${prefixes[Math.floor(Math.random() * prefixes.length)]}${suffix}`;
 }
 
-function createPlayer(name) {
-  const id = crypto.randomUUID?.() ?? `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+function createPlayer(name, id) {
   return { id, name };
 }
 
@@ -71,19 +70,19 @@ async function handleCreate() {
   storeName(name);
   playerNameInput.value = name;
 
-  const roomCode = generateRoomCode();
-  const player = createPlayer(name);
-  const initialState = createInitialGameState(roomCode, player.id);
-  initialState.players[player.id] = {
-    id: player.id,
-    name,
-    score: 0,
-    eliminated: false,
-    ready: true,
-    online: true,
-  };
-
   try {
+    const player = createPlayer(name, await ensureAuthenticated());
+    const roomCode = generateRoomCode();
+    const initialState = createInitialGameState(roomCode, player.id);
+    initialState.players[player.id] = {
+      id: player.id,
+      name,
+      score: 0,
+      eliminated: false,
+      ready: true,
+      online: true,
+    };
+
     await createRoom(initialState);
     sessionStorage.setItem("roomCode", roomCode);
     sessionStorage.setItem("playerId", player.id);
@@ -113,9 +112,8 @@ async function handleJoin() {
     return;
   }
 
-  const player = createPlayer(name);
-
   try {
+    const player = createPlayer(name, await ensureAuthenticated());
     await joinRoom(roomCode, {
       id: player.id,
       name,

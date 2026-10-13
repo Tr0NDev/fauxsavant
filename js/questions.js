@@ -2,71 +2,81 @@
 //  questions.js - Chargement et gestion des questions
 // ============================================================
 
-// Liste des thèmes disponibles avec leur fichier JSON
-// Ajoute tes thèmes ici en suivant le même format
+const SUPABASE_URL = "https://oyfvucukbyejgykaqttr.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_ioeHAVKx_JHu6SSsbYUkYA_q9EJc0oH";
+
 const THEMES = [
-  { name: "Géographie", file: "data/questions/geographie.json" },
-  { name: "Histoire",   file: "data/questions/histoire.json" },
-  { name: "Science",    file: "data/questions/science.json" },
-  { name: "Art",    file: "data/questions/art.json" },
-  { name: "Cinema",    file: "data/questions/cinema.json" },
-  { name: "Jeux Vidéo",    file: "data/questions/jeuxvideo.json" },
-  { name: "Sport",    file: "data/questions/sport.json" },
-  { name: "Musique",    file: "data/questions/musique.json" },
-  // { name: "Sport",   file: "data/questions/sport.json" },
-  // { name: "Cinéma",  file: "data/questions/cinema.json" },
+  { name: "Géographie", key: "geographie" },
+  { name: "Histoire", key: "histoire" },
+  { name: "Science", key: "science" },
+  { name: "Art", key: "art" },
+  { name: "Cinema", key: "cinema" },
+  { name: "Jeux Vidéo", key: "jeuxvideo" },
+  { name: "Sport", key: "sport" },
+  { name: "Musique", key: "musique" },
 ];
 
-// Cache pour éviter de re-fetcher les fichiers
-const _cache = {};
+const _cache = new Map();
+
+function getSupabaseConfig() {
+  return { url: SUPABASE_URL.replace(/\/+$/, ""), anonKey: SUPABASE_ANON_KEY };
+}
 
 /**
- * Charge un fichier JSON de questions (avec cache)
+ * Charge un thème depuis Supabase (avec cache).
  */
-async function loadTheme(themeFile) {
-  if (_cache[themeFile]) return _cache[themeFile];
-  const res = await fetch(themeFile);
-  if (!res.ok) throw new Error(`Impossible de charger ${themeFile}`);
-  const data = await res.json();
-  _cache[themeFile] = data;
+async function loadTheme(themeKey) {
+  if (_cache.has(themeKey)) return _cache.get(themeKey);
+
+  const { url, anonKey } = getSupabaseConfig();
+  const query = new URLSearchParams({
+    select: "question,answers,difficulty",
+    theme: `eq.${themeKey}`,
+    order: "id.asc",
+  });
+  const headers = { apikey: anonKey };
+  if (anonKey.startsWith("eyJ")) {
+    headers.Authorization = `Bearer ${anonKey}`;
+  }
+
+  const response = await fetch(`${url}/rest/v1/questions?${query}`, { headers });
+  if (!response.ok) {
+    const detail = await response.text();
+    throw new Error(`Impossible de charger le thème "${themeKey}" depuis Supabase (${response.status})${detail ? ` : ${detail}` : ""}`);
+  }
+
+  const data = await response.json();
+  if (!Array.isArray(data)) {
+    throw new Error(`La réponse Supabase pour "${themeKey}" n'est pas une liste de questions.`);
+  }
+  _cache.set(themeKey, data);
   return data;
 }
 
-/**
- * Tire une question aléatoire depuis un thème aléatoire.
- * Les thèmes sont weightés par leur nombre de questions.
- * Si un thème est vide ou invalide, il est ignoré.
- * @returns {{ question, answers, difficulty, theme }}
- */
-/**
- * Retourne une clé sûre pour une question (utilisée pour l'exclusion)
- */
 function questionKey(q) {
-  const text = (q && q.question) ? q.question : String(q || '');
-  return encodeURIComponent(text).replace(/[.#$\[\]]/g, '_');
+  const text = (q && q.question) ? q.question : String(q || "");
+  return encodeURIComponent(text).replace(/[.#$\[\]]/g, "_");
 }
 
 /**
- * Tire une question aléatoire, en option excluant celles présentes dans `usedMap`.
- * `usedMap` est un objet dont les clés sont des clés de question (voir `questionKey`).
+ * Tire une question aléatoire, pondérée par le nombre de questions de chaque thème.
+ * @returns {{ question, answers, difficulty, theme }}
  */
 export async function getRandomQuestion(usedMap = {}) {
-  const availableThemes = [];
+  const loadedThemes = await Promise.all(THEMES.map(async (theme) => ({
+    theme,
+    questions: await loadTheme(theme.key),
+  })));
 
-  for (const theme of THEMES) {
-    const questions = await loadTheme(theme.file).catch(() => []);
-    const validQuestions = Array.isArray(questions) ? questions : [];
-    // Filter out questions that are marked used (answered correctly)
-    const filtered = validQuestions.filter(q => !usedMap || !usedMap[questionKey(q)]);
-    // If filtering removes all questions, fall back to full list for that theme
-    const finalList = filtered.length ? filtered : validQuestions;
-    if (finalList.length > 0) {
-      availableThemes.push({ theme, questions: finalList });
-    }
-  }
+  const availableThemes = loadedThemes
+    .map(({ theme, questions }) => {
+      const filtered = questions.filter(q => !usedMap || !usedMap[questionKey(q)]);
+      return { theme, questions: filtered.length ? filtered : questions };
+    })
+    .filter(({ questions }) => questions.length > 0);
 
   if (availableThemes.length === 0) {
-    throw new Error('Aucun thème de questions disponible.');
+    throw new Error("Aucune question disponible dans Supabase. Vérifie que les thèmes ont été importés.");
   }
 
   const totalQuestions = availableThemes.reduce((sum, item) => sum + item.questions.length, 0);
@@ -86,61 +96,41 @@ export async function getRandomQuestion(usedMap = {}) {
 }
 
 /**
- * Génère un QCM à partir d'une question :
- * 1 bonne réponse + 3 mauvaises piochées dans le même thème
- * @param {{ question, answers, difficulty, theme, file }} questionObj
+ * Génère un QCM à partir d'une question : une bonne réponse et trois mauvaises.
  * @returns {{ choices: string[], correctIndex: number }}
  */
-export async function buildQCM(questionObj, themeFile) {
-  const file = themeFile || THEMES.find(t => t.name === questionObj.theme)?.file;
-  const allQuestions = file ? await loadTheme(file) : [];
-
-  // Bonne réponse = première réponse dans le tableau
+export async function buildQCM(questionObj) {
+  const themeKey = THEMES.find(theme => theme.name === questionObj.theme)?.key;
+  const allQuestions = themeKey ? await loadTheme(themeKey) : [];
   const correctAnswer = questionObj.answers[0];
-
-  // Mauvaises réponses = premières réponses des autres questions du même thème
   const wrongPool = allQuestions
-    .filter(q => !q.answers.some(a => questionObj.answers.includes(a)))
+    .filter(q => !q.answers.some(answer => questionObj.answers.includes(answer)))
     .map(q => q.answers[0])
     .filter(Boolean);
-
-  // Mélanger et prendre 3 mauvaises réponses
   const shuffledWrong = wrongPool.sort(() => Math.random() - 0.5).slice(0, 3);
 
-  // Si pas assez de mauvaises réponses, compléter avec des génériques
   while (shuffledWrong.length < 3) {
     shuffledWrong.push(`Option ${shuffledWrong.length + 2}`);
   }
 
-  // Construire et mélanger les 4 choix
   const choices = [correctAnswer, ...shuffledWrong].sort(() => Math.random() - 0.5);
-  const correctIndex = choices.indexOf(correctAnswer);
-
-  return { choices, correctIndex };
+  return { choices, correctIndex: choices.indexOf(correctAnswer) };
 }
 
-/**
- * Vérifie si une réponse donnée est correcte
- */
 function normalizeAnswer(answer) {
-  let normalized = answer
+  return answer
     .toString()
-    .normalize('NFD')
-    .replace(/\p{Diacritic}/gu, '')
+    .normalize("NFD")
+    .replace(/\p{Diacritic}/gu, "")
     .toLowerCase()
-    .replace(/^(?:la|le|un)\s+/i, '');
-
-  return normalized.replace(/[\s,\.\?!;:]+/g, '');
+    .replace(/^(?:la|le|un)\s+/i, "")
+    .replace(/[\s,\.\?!;:]+/g, "");
 }
 
-// Basic singularization for common French plural forms to accept both
-// singular and plural answers (e.g. "séisme" / "séismes", "château" / "châteaux").
 function singularize(word) {
   if (!word || word.length <= 2) return word;
-  // aux -> al (chevaux -> cheval)
-  if (word.endsWith('aux')) return word.slice(0, -3) + 'al';
-  // common plural endings: remove trailing s or x
-  if (word.endsWith('s') || word.endsWith('x')) return word.slice(0, -1);
+  if (word.endsWith("aux")) return word.slice(0, -3) + "al";
+  if (word.endsWith("s") || word.endsWith("x")) return word.slice(0, -1);
   return word;
 }
 
@@ -149,9 +139,8 @@ export function checkAnswer(userAnswer, questionObj) {
   const inputVariants = new Set([normalizedInput, singularize(normalizedInput)]);
 
   return questionObj.answers.some((answer) => {
-    const aNorm = normalizeAnswer(answer);
-    const aVariants = [aNorm, singularize(aNorm)];
-    return aVariants.some((v) => inputVariants.has(v));
+    const normalizedAnswer = normalizeAnswer(answer);
+    return [normalizedAnswer, singularize(normalizedAnswer)].some(value => inputVariants.has(value));
   });
 }
 

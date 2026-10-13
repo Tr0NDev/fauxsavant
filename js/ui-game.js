@@ -7,6 +7,7 @@ import {
   endGame,
   deleteRoom,
   setupPresence,
+  ensureAuthenticated,
   joinRoom,
 } from "./db.js";
 import { getRandomQuestion, checkAnswer } from "./questions.js";
@@ -1225,6 +1226,21 @@ async function init() {
     return;
   }
 
+  try {
+    const authenticatedPlayerId = await ensureAuthenticated();
+    if (currentPlayerId && currentPlayerId !== authenticatedPlayerId) {
+      sessionStorage.removeItem("playerId");
+      currentPlayerId = null;
+    }
+    currentPlayerId = authenticatedPlayerId;
+  } catch (err) {
+    console.error("Firebase authentication failed", err);
+    roomStatus.textContent = "Connexion sécurisée impossible.";
+    showToast("Active la connexion anonyme dans Firebase Authentication puis réessaie.", "danger");
+    btnStart.disabled = true;
+    return;
+  }
+
   loadVisibilityPrefs();
   roomCodeLabel.textContent = currentRoomCode;
   updateRoomCodeVisibility();
@@ -1316,7 +1332,7 @@ async function init() {
       try { return localStorage.getItem('lastPlayerName') || ''; } catch (e) { return ''; }
     })();
     let name = storedName && storedName.trim() ? storedName.trim() : `Invité${Math.floor(1000 + Math.random() * 9000)}`;
-    const id = (crypto.randomUUID && crypto.randomUUID()) || `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+    const id = currentPlayerId;
     const playerObj = {
       id,
       name,

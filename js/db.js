@@ -4,6 +4,9 @@
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import {
+  getAuth, signInAnonymously
+} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+import {
   getDatabase, ref, set, get, update, push,
   onValue, onDisconnect, serverTimestamp, remove
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
@@ -11,11 +14,14 @@ import FIREBASE_CONFIG from "./firebase-config.js";
 
 // ── Init ──────────────────────────────────────────────────────
 const app = initializeApp(FIREBASE_CONFIG);
+const auth = getAuth(app);
 const db  = getDatabase(app);
+let authenticationPromise;
 
 // ── Helpers ───────────────────────────────────────────────────
 const roomRef    = (code)          => ref(db, `rooms/${code}`);
 const playerRef  = (code, id)      => ref(db, `rooms/${code}/players/${id}`);
+const playersRef = (code)          => ref(db, `rooms/${code}/players`);
 const phaseRef   = (code)          => ref(db, `rooms/${code}/phase`);
 const voteRef    = (code, voterId) => ref(db, `rooms/${code}/votes/${voterId}`);
 const questionRef= (code)          => ref(db, `rooms/${code}/currentQuestion`);
@@ -23,29 +29,62 @@ const logRef     = (code)          => ref(db, `rooms/${code}/log`);
 
 // ── Salon ─────────────────────────────────────────────────────
 
+/** Authentifie le navigateur et utilise l'UID Firebase comme identifiant joueur. */
+export async function ensureAuthenticated() {
+  await auth.authStateReady();
+  if (auth.currentUser) return auth.currentUser.uid;
+
+  if (!authenticationPromise) {
+    authenticationPromise = signInAnonymously(auth)
+      .then(({ user }) => user.uid)
+      .catch((error) => {
+        if (error.code === "auth/operation-not-allowed") {
+          throw new Error("Active la connexion anonyme dans Firebase Authentication.");
+        }
+        throw error;
+      })
+      .finally(() => {
+        authenticationPromise = null;
+      });
+  }
+
+  return authenticationPromise;
+}
+
 /** Crée une nouvelle partie dans Firebase */
 export async function createRoom(initialState) {
+  const uid = await ensureAuthenticated();
+  if (initialState.hostId !== uid || !initialState.players?.[uid]) {
+    throw new Error("La partie doit être créée par le joueur connecté.");
+  }
   await set(roomRef(initialState.roomCode), initialState);
 }
 
 /** Rejoint une partie existante */
 export async function joinRoom(roomCode, player) {
-  const snap = await get(roomRef(roomCode));
-  if (!snap.exists()) throw new Error("Partie introuvable");
-  const room = snap.val();
+  const uid = await ensureAuthenticated();
+  if (player.id !== uid) throw new Error("Identifiant joueur invalide.");
+
+  const phaseSnap = await get(phaseRef(roomCode));
+  if (!phaseSnap.exists()) throw new Error("Partie introuvable");
+  const phase = phaseSnap.val();
+
   // If the game is already started, add the player as a spectator
   const playerToWrite = { ...player };
-  if (room.phase !== "lobby") {
+  if (phase !== "lobby") {
     playerToWrite.eliminated = true; // treated as non-active by game logic
     playerToWrite.spectator = true;
     playerToWrite.ready = false;
   } else {
-    const count = Object.keys(room.players || {}).length;
+    const playersSnap = await get(playersRef(roomCode));
+    const count = playersSnap.exists() ? Object.keys(playersSnap.val()).length : 0;
     if (count >= 10) throw new Error("La partie est complète (10 joueurs max)");
   }
 
   await set(playerRef(roomCode, player.id), playerToWrite);
-  return room;
+  const snap = await get(roomRef(roomCode));
+  if (!snap.exists()) throw new Error("Partie introuvable");
+  return snap.val();
 }
 
 /** Écoute les changements de la room en temps réel */
